@@ -26,7 +26,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   late String name, description, code;
   late num price;
-  late int expirationMonth,unitAmount,numberOfCaloric;
+  late int expirationMonth, unitAmount, numberOfCaloric;
   File? fileimage;
   bool isFeature = false;
   bool isOrganic = false;
@@ -37,8 +37,8 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SingleChildScrollView(
         child: Form(
-          key:_formkey ,
-          autovalidateMode:autovalidateMode,
+          key: _formkey,
+          autovalidateMode: autovalidateMode,
           child: Column(
             children: [
               CustomTextFormField(
@@ -65,10 +65,9 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 hinttext: 'expirationMonth',
                 textInputType: TextInputType.number,
                 onSaved: (value) {
-                  expirationMonth =int.parse(value!);
+                  expirationMonth = int.parse(value!);
                 },
               ),
-
               const SizedBox(
                 height: 16,
               ),
@@ -140,31 +139,24 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     if (_formkey.currentState!.validate()) {
                       _formkey.currentState!.save();
                       ProductEntity input = ProductEntity(
-                        name: name,
-                        price: price,
-                        code: code,
-                        description: description,
-                        image: fileimage!,
-                        isFeature: isFeature,
-                        isOrgnic:isOrganic,
-                        expirationMonth: expirationMonth,
-                        numberOfCaloric: numberOfCaloric,
-                        unitAmount: unitAmount,
-                        reviews:[
-                          
-
-                        ]
-
-                        );
+                          name: name,
+                          price: price,
+                          code: code,
+                          description: description,
+                          image: fileimage!,
+                          isFeature: isFeature,
+                          isOrgnic: isOrganic,
+                          expirationMonth: expirationMonth,
+                          numberOfCaloric: numberOfCaloric,
+                          unitAmount: unitAmount,
+                          reviews: []);
                       context.read<AddProductCubit>().addProduct(input);
                     } else {
-
                       setState(() {
                         autovalidateMode = AutovalidateMode.always;
                       });
                     }
                   } else {
-
                     BuildSnakBar(context, 'Please select an image');
                   }
                 },

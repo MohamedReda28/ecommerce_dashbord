@@ -11,36 +11,31 @@ import '../../../../core/widget/build appbar.dart';
 
 class AddProductView extends StatelessWidget {
   const AddProductView({super.key});
-static const routName='AddProduct';
+  static const routName = 'AddProduct';
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar:buildAppBar(title: 'Add Product'),
-
+    return Scaffold(
+      appBar: buildAppBar(title: 'Add Product'),
       body: BlocProvider(
-        create: (context)=>AddProductCubit(
-            getIt.get<ImageRepo>(),
-           getIt.get<ProductRepo>(),
+        create: (context) => AddProductCubit(
+          getIt.get<ImageRepo>(),
+          getIt.get<ProductRepo>(),
         ),
-          child: Builder(
-            builder: (context) {
-              return BlocConsumer<AddProductCubit,AddProductState>(
-                  builder: (BuildContext context, AddProductState state) {
-                    return ModalProgressHUD(
-                        inAsyncCall: state is AddProductLoading ,
-                        child: AddProductViewBody());
-                  },
-                  listener: (BuildContext context, AddProductState state) {
-                    if(state is AddProductSuccess){
-                      return BuildSnakBar(context, 'Add Product Seccessfully');
-                     }
-                    if(state is AddProductFailur){
-                      return BuildSnakBar(context, state.errorMassage);
-                      }
-                  }
-              );
+        child: Builder(builder: (context) {
+          return BlocConsumer<AddProductCubit, AddProductState>(
+              builder: (BuildContext context, AddProductState state) {
+            return ModalProgressHUD(
+                inAsyncCall: state is AddProductLoading,
+                child: AddProductViewBody());
+          }, listener: (BuildContext context, AddProductState state) {
+            if (state is AddProductSuccess) {
+              return BuildSnakBar(context, 'Add Product Seccessfully');
             }
-            ),
+            if (state is AddProductFailur) {
+              return BuildSnakBar(context, state.errorMassage);
+            }
+          });
+        }),
       ),
     );
   }

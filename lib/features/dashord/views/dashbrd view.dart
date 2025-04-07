@@ -3,11 +3,11 @@ import 'package:fruit_dashbord/features/dashord/views/widget/DashBordViewBody.da
 
 class DashBordView extends StatelessWidget {
   const DashBordView({super.key});
-static const routName = 'dashBord';
+  static const routName = 'dashBord';
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-     body: Dashbordviewbody(),
+      body: Dashbordviewbody(),
     );
   }
 }

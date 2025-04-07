@@ -6,9 +6,11 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.hinttext,
-    required this.textInputType, 
-     this.onSaved,
-    this.obscureText=false,  this.suff, this.maxLines=1,
+    required this.textInputType,
+    this.onSaved,
+    this.obscureText = false,
+    this.suff,
+    this.maxLines = 1,
   });
 
   final String hinttext;
@@ -21,7 +23,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       maxLines: maxLines,
-      obscureText:obscureText,
+      obscureText: obscureText,
       onSaved: onSaved,
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -30,9 +32,7 @@ class CustomTextFormField extends StatelessWidget {
           return null;
         }
       },
-
       keyboardType: textInputType,
-
       decoration: InputDecoration(
         suffixIcon: suff,
         filled: true,

@@ -13,14 +13,18 @@ class Dashbordviewbody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomBotton(title: 'Add Data', ontap: () {
-            Navigator.pushNamed(context, AddProductView.routName);
-          },),
+          CustomBotton(
+            title: 'Add Data',
+            ontap: () {
+              Navigator.pushNamed(context, AddProductView.routName);
+            },
+          ),
           SizedBox(height: 20),
-          CustomBotton(title: 'get orders', ontap: () {
-             Navigator.pushNamed(context, GetOrders.routName);
-          })
-
+          CustomBotton(
+              title: 'get orders',
+              ontap: () {
+                Navigator.pushNamed(context, GetOrders.routName);
+              })
         ],
       ),
     );
